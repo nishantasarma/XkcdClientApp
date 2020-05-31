@@ -15,11 +15,13 @@ if __name__ == '__main__':
     print(oplist) #oplist is a list of tuples
 
     for opt, arg in oplist:
-        if opt == '-h' or '--help':
+        print(opt)
+        print(arg)
+        if opt == '-h' or opt == '--help':
             print('help message')
-        elif opt == '-n' or '--comicnum':
+        elif opt == '-n' or opt == '--comicnum':
             print('Get the comic number ' + str(arg))
-        elif opt == '-o' or --'print':
+        elif opt == '-o' or opt == '--print':
             print('print output in format json/text')
-        elif opt == '-s' or '--save-image':
+        elif opt == '-s' or opt == '--save-image':
             print('Download image in this directory')
