@@ -19,7 +19,7 @@ class XkcdClient():
     def get_image(self,img_url):
         self.img_name = img_url.split('/')[-1]
         img_data = requests.get(img_url).content
-        with open(self.img_name+'.png', 'wb') as handler:
+        with open(self.img_name, 'wb') as handler:
             handler.write(img_data)
 
 
@@ -61,9 +61,15 @@ if __name__ == '__main__':
                 url_specific = 'http://xkcd.com/'+arg+'/info.0.json'
                 response = client.api_call(url_specific)
         elif opt == '-o' or opt == '--print':
-            response = client.api_call('https://xkcd.com/info.0.json')
-            print('print output in format json/text')
-            print(response)
+            if comic_num:
+                if comic_num is '0':
+                    print('print output in format json/text')
+                    print(response)
+                else:
+                    print('The output in json/text is')
+                    print(response)
+            else:
+                print('Set the -n parameter first')
         elif opt == '-s' or opt == '--save-image':
             if comic_num:
                 img_url = response['img']
